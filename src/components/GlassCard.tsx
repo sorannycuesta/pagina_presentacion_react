@@ -1,17 +1,18 @@
-// src/components/GlassCard.tsx
-import { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 
-interface GlassCardProps {
+export interface GlassCardProps {
   children: ReactNode;
   className?: string;
+  style?: CSSProperties; // Necesario para inline styles
 }
 
-const GlassCard = ({ children, className = "" }: GlassCardProps) => (
-  <div
-    className={`backdrop-blur-lg bg-white/10 border border-white/20 rounded-3xl shadow-xl ${className}`}
-  >
-    {children}
-  </div>
-);
-
-export default GlassCard;
+export default function GlassCard({ children, className = "", style }: GlassCardProps) {
+  return (
+    <div
+      className={`glass-card ${className}`}
+      style={style}
+    >
+      {children}
+    </div>
+  );
+}
